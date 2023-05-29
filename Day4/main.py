@@ -29,13 +29,12 @@ with open('input.txt', 'r') as f:
         second_max = int(second[1])
 
 
-        if (first_min >= second_min and first_max <= second_max or 
-            second_min >= first_min and second_max <= first_max):
-
+        if first_min <= second_max and second_min <= first_max:
             result += 1
 
 
     print(result)
+
 
 # 2-4,6-8
 # 2-3,4-5
