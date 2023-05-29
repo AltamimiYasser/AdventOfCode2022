@@ -37,40 +37,85 @@ CrZsJsPPZsGzwwsLwLmpwMDw'''
 
 with open('input.txt', 'r') as f:
     result = 0
+    currentGroup = []
+    index = 0
+
     # for line in testing.splitlines():
-    #     # devide the line in half
-    #     half_length = len(line) // 2
-    #     first_half = line[:half_length]
-    #     second_half = line[half_length:]
     #
-    #     # find common letters 
-    #     common_letters = set();
+    #     # is the index 0?
+    #     if index == 0:
+    #         currentGroup = []
     #
-    #     for letter in first_half:
-    #         if letter in second_half:
-    #             common_letters.add(letter)
+    #     # add the current line
+    #     currentGroup.append(line)
     #
-    #     for letter in common_letters:
-    #         result += prio[letter]
+    #     # increase the index
+    #     index += 1
+    #
+    #     # is the index 3?
+    #     if index == 3:
+    #         found = False
+    #         print(f"current group is: {currentGroup}")
+    #         # find the common_letters between the last three lines
+    #         for letter in currentGroup[0]:
+    #             if found: break
+    #             if letter in currentGroup[1]:
+    #                 if letter in currentGroup[2]:
+    #                     print(f"found the letter common in three of them: {letter}")
+    #                     # add them to the result
+    #                     result += prio[letter]
+    #                     found = True
+    #
+    #         index = 0
+    #
     #
     # print(result)
+
+        # # devide the line in half
+        # half_length = len(line) // 2
+        # first_half = line[:half_length]
+        # second_half = line[half_length:]
+    #
+        # get the first three lines
+
+        # find common letters
+        # common_letters = set();
+        #
+        # for letter in first_half:
+        #     if letter in second_half:
+        #         common_letters.add(letter)
+        #
+        # for letter in common_letters:
+        #     result += prio[letter]
+
         # 
         # get the priority value of the common letter and add it to the result
     for line in f:
-        half_length = len(line) // 2
-        first_half = line[:half_length]
-        second_half = line[half_length:]
+        # is the index 0?
+        if index == 0:
+            currentGroup = []
+            
+        # add the current line
+        currentGroup.append(line)
 
-        # find common letters 
-        common_letters = set();
+        # increase the index
+        index += 1
 
-        for letter in first_half:
-            if letter in second_half:
-                common_letters.add(letter)
+        # is the index 3?
+        if index == 3:
+            found = False
+            # find the common_letters between the last three lines
+            for letter in currentGroup[0]:
+                if found: break
+                if letter in currentGroup[1]:
+                    if letter in currentGroup[2]:
+                        # add them to the result
+                        result += prio[letter]
+                        found = True
 
-        for letter in common_letters:
-            result += prio[letter]
+            index = 0
 
+        
     print(result)
 
     # print the result
